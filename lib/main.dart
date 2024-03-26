@@ -1,3 +1,4 @@
+import 'package:app_tenis/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,24 +20,10 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         
       ),
-      home: const MyHomePage(),
+      home: const HomePage(),
     );
   }
 }
 
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('App tenis'),
-      ),
-      body: const Center(
-        child: Text('Hello World'),
-      ),
-    );
-  }
-}
