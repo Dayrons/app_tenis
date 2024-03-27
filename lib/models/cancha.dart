@@ -1,12 +1,18 @@
-class Cancha {
+import 'package:app_tenis/models/model.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+class Cancha extends Model {
+
+  final String tableName = "canchas";
+  
   int id;
   String nombre;
   double precio;
   String direccion;
   String descripcion;
   String imagen;
-  String latitud;
-  String longitud;
+  String lat;
+  String long;
 
 
 
@@ -17,8 +23,8 @@ class Cancha {
     required this.direccion,
     required this.descripcion,
     required this.imagen,
-    required this.latitud,
-    required this.longitud,
+    required this.lat,
+    required this.long,
 
 
   });
@@ -30,8 +36,8 @@ class Cancha {
         direccion = snapshot['direccion'],
         descripcion = snapshot['descripcion'],
         imagen = snapshot['imagen'],
-        latitud = snapshot['latitud'],
-        longitud = snapshot['longitud'];
+        lat = snapshot['lat'],
+        long = snapshot['long'];
      
   
   Map<String, dynamic> toJson() {
@@ -42,9 +48,24 @@ class Cancha {
       "direccion": direccion,
       "descripcion": descripcion,
       "imagen": imagen,
-      "latitud": latitud,
-      "longitud": longitud,
+      "lat": lat,
+      "long": long,
       
     };
   }
+
+  Future<int> obtenerProbabilidadDeLluvia() async {
+  var url = Uri.parse('http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={3968c586fc0c853ab92995ab7def51b7}');
+
+  var response = await http.get(url);
+  var data = json.decode(response.body);
+  int probabilidadDeLluvia = data['list'][0]['rain']['3h'];
+  return probabilidadDeLluvia;
+
+  
+}
+
+
+
+
 }

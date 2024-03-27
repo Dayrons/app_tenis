@@ -12,9 +12,9 @@ class CanchasPage extends StatelessWidget {
       direccion: "direcion",
       descripcion: "Bello ambiente y siempre soleado",
       imagen: "assets/cancha_A.jpg",
-      latitud: "10",
+      lat: "10",
       precio: 50.00,
-      longitud: "10",
+      long: "10",
     ),
     Cancha(
       id: 2,
@@ -23,8 +23,8 @@ class CanchasPage extends StatelessWidget {
       direccion: "direcion",
       descripcion: "Hermosas canchas rodeadas de naturaleza",
       imagen: "assets/cancha_B.jpg",
-      latitud: "20",
-      longitud: "20",
+      lat: "20",
+      long: "20",
     ),
     Cancha(
       id: 3,
@@ -33,8 +33,8 @@ class CanchasPage extends StatelessWidget {
       direccion: "direcion",
       descripcion: "Canchas con vista a un hermoso bosque",
       imagen: "assets/cancha_C.jpg",
-      latitud: "30",
-      longitud: "30",
+      lat: "30",
+      long: "30",
     )
   ];
 
@@ -44,13 +44,13 @@ class CanchasPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           // color: Colors.green,
           gradient: LinearGradient(
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
             colors: [
-              Colors.green[900]!,
+              Color(0xFF4f643c),
               Colors.white,
             ],
           ),
