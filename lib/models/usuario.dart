@@ -1,14 +1,18 @@
 import 'package:app_tenis/models/model.dart';
 
 class Usuario extends Model{
-  int id;
+
+
+  final String tableName = "usuarios";
+
+  int? id;
   String nombre;
   String foto;
   String apellido;
   String email;
   String telefono;
 
-  Usuario({required this.id, required this.nombre, required this.foto, required this.apellido, required this.email, required this.telefono});
+  Usuario({ this.id, required this.nombre, required this.foto, required this.apellido, required this.email, required this.telefono});
 
   factory Usuario.fromJson(Map<String, dynamic> json) {
     return Usuario(
@@ -21,9 +25,9 @@ class Usuario extends Model{
     );
   }
 
-  Map<String, dynamic> toJson() {
+
+  Map<String, dynamic> toMap() {
     return {
-      'id': id,
       'nombre': nombre,
       'foto': foto,
       'apellido': apellido,
@@ -31,4 +35,6 @@ class Usuario extends Model{
       'telefono': telefono,
     };
   }
+
+  
 }

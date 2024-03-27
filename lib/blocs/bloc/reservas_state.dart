@@ -7,4 +7,10 @@ sealed class ReservasState extends Equatable {
   List<Object> get props => [];
 }
 
-final class ReservasInitial extends ReservasState {}
+final class ReservasInitial extends ReservasState {
+  final List<Reserva> reservas;
+
+  const ReservasInitial({
+    this.reservas = const [],
+  });
+}

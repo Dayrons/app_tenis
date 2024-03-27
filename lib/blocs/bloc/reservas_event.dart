@@ -6,3 +6,11 @@ sealed class ReservasEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class Init extends ReservasEvent {
+  const Init();
+
+  @override
+  List<Object> get props => [];
+}
+

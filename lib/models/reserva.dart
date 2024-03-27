@@ -1,19 +1,26 @@
 import 'package:app_tenis/models/cancha.dart';
 import 'package:app_tenis/models/model.dart';
+import 'package:app_tenis/models/usuario.dart';
 
-class Reserva extends Model{
-
+class Reserva extends Model {
   final String tableName = "reservas";
-  
-  int id;
-  String fecha;
-  String hora;
-  int idUsuario;
-  int idCancha;
-  int idEstado;
+
+  int? id;
+  String? fecha;
+  String? hora;
+  int? idUsuario;
+  int? idCancha;
+  int? idEstado;
   Cancha? cancha;
 
-  Reserva({required this.id, required this.fecha, required this.hora, required this.idUsuario, required this.idCancha,  required this.idEstado, this.cancha});
+  Reserva(
+      {this.id,
+      this.fecha,
+      this.hora,
+      this.idUsuario,
+      this.idCancha,
+      this.idEstado,
+      this.cancha});
 
   factory Reserva.fromJson(Map<String, dynamic> json) {
     return Reserva(
@@ -44,9 +51,8 @@ class Reserva extends Model{
       cancha: cancha ?? this.cancha,
     );
   }
-  
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toMap() {
     return {
       'id': id,
       'fecha': fecha,
@@ -56,4 +62,9 @@ class Reserva extends Model{
       'id_estado': idEstado,
     };
   }
+
+  // Future<Usuario> usuario() async {
+  //   return await Usuario().find(idUsuario!);
+  // }
+
 }

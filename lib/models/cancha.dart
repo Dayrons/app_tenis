@@ -5,7 +5,7 @@ class Cancha extends Model {
 
   final String tableName = "canchas";
   
-  int id;
+  int? id;
   String nombre;
   double precio;
   String direccion;
@@ -13,11 +13,13 @@ class Cancha extends Model {
   String imagen;
   String lat;
   String long;
+  String? iluminacion;
+  String? superficie;
 
 
 
   Cancha({
-    required this.id,
+    this.id,
     required this.nombre,
     required this.precio,
     required this.direccion,
@@ -25,6 +27,8 @@ class Cancha extends Model {
     required this.imagen,
     required this.lat,
     required this.long,
+    this.iluminacion,
+    this.superficie,
 
 
   });
@@ -40,14 +44,15 @@ class Cancha extends Model {
         long = snapshot['long'];
      
   
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toMap() {
     return {
-      "id": id,
       "nombre": nombre,
       "precio": precio,
       "direccion": direccion,
       "descripcion": descripcion,
       "imagen": imagen,
+      "superficie": superficie,
+      "iluminacion": iluminacion,
       "lat": lat,
       "long": long,
       
