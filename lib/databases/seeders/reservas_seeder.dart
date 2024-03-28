@@ -33,6 +33,8 @@ final List<Reserva> reservas = [
 
 void callReservasSeeder() async {
   for (Reserva reserva in reservas) {
+    print('Creando reserva...');
+    print("idusuario: ${reserva.idUsuario} idcancha: ${reserva.idCancha} fecha: ${reserva.fecha} hora: ${reserva.hora}");
     await reserva.create();
   }
 }
