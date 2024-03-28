@@ -36,7 +36,7 @@ class Cancha extends Model {
   Cancha.fromMap(Map snapshot)
       : id = snapshot['id'],
         nombre = snapshot['nombre'],
-        precio = snapshot['precio'],
+        precio = double.parse(snapshot['precio']),
         direccion = snapshot['direccion'],
         descripcion = snapshot['descripcion'],
         imagen = snapshot['imagen'],
