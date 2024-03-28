@@ -13,7 +13,7 @@ class ItemBody extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         width: double.infinity,
         // height: 80,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.all(Radius.circular(10)),
         ),
@@ -32,7 +32,7 @@ class ItemBody extends StatelessWidget {
                         shape: BoxShape.circle,
                         color: Colors.grey,
                         image: DecorationImage(
-                            image: NetworkImage(faker.image.image()),
+                            image: NetworkImage(reserva.usuario!.foto!),
                             fit: BoxFit.cover)),
                   ),
                    Column(

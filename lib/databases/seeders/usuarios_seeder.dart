@@ -5,7 +5,7 @@ List<Usuario> usuarios = [
   Usuario(
     nombre: 'Dayrons',
     telefono: '04120148704',
-    foto: faker.image.image(),
+    foto: "https://avatars.githubusercontent.com/u/52265180?v=4",
     apellido: 'Tovar',
     email: "dayrons@example.com",
   ),

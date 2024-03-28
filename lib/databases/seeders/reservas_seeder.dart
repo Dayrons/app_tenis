@@ -2,15 +2,37 @@ import 'dart:math';
 import 'package:app_tenis/models/reserva.dart';
 import 'package:faker/faker.dart';
 
-void callReservasSeeder() async {
-  for (int i = 0; i < 10; i++) {
-    Reserva reserva = Reserva(
+final List<Reserva> reservas = [
+    Reserva(
       fecha: faker.date.dateTime().toString(),
       hora: faker.date.time().toString(),
-      idUsuario: Random().nextInt(3) + 1,
-      idCancha: Random().nextInt(3) + 1,
-    );
+      idUsuario: 1,
+      idCancha: 3,
+    ),
+    Reserva(
+      fecha: faker.date.dateTime().toString(),
+      hora: faker.date.time().toString(),
+      idUsuario: 3,
+      idCancha: 2,
+    ),
+    Reserva(
+      fecha: faker.date.dateTime().toString(),
+      hora: faker.date.time().toString(),
+      idUsuario: 2,
+      idCancha: 2,
+    ),
+    Reserva(
+      fecha: faker.date.dateTime().toString(),
+      hora: faker.date.time().toString(),
+      idUsuario: 1,
+      idCancha: 1,
+    ),
 
+];
+
+
+void callReservasSeeder() async {
+  for (Reserva reserva in reservas) {
     await reserva.create();
   }
 }
