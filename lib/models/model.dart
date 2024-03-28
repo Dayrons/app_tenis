@@ -6,7 +6,9 @@ abstract class Model {
 
   Future<List> list() async {
     Database db = await DB().conexion();
-    return await db.query(tableName);
+    final data =  await db.query(tableName);
+    print(data);
+    return data;
   }
 
   Future<bool> delete() {
