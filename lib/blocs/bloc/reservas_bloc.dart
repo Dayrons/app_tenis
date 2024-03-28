@@ -21,7 +21,7 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
         final List<Reserva> reservasObject =
             List.generate(reservas.length, (index) {
           final reserva = reservas[index];
-          final reservaObjet= Reserva(
+        return Reserva(
             id: reserva['id'],
             fecha: reserva['fecha'],
             hora: reserva['hora'],
@@ -29,10 +29,14 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
             idCancha: reserva['id_cancha'],
             idEstado: reserva['id_estado'],
           );
-          reservaObjet.setUsuario();
-          reservaObjet.setCancha();
-          return reservaObjet;
+          
+
         });
+
+        for (Reserva reserva in reservasObject) {
+          await reserva.setUsuario();
+          await reserva.setCancha();
+        }
 
         emit(ReservasInitial(reservas: reservasObject));
       }

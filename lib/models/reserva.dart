@@ -66,12 +66,12 @@ class Reserva extends Model {
     };
   }
 
-  void  setUsuario() async {
+  Future  setUsuario() async {
     final Map usuario =  await Usuario().find(idUsuario!);
     this.usuario = Usuario.fromMap(usuario);
   }
 
-  void setCancha()async{
+  Future setCancha()async{
     final Map cancha = await Cancha().find(idCancha!);
     this.cancha = Cancha.fromMap(cancha);
   }
