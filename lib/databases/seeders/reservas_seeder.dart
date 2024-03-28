@@ -37,7 +37,7 @@ void callReservasSeeder() async {
   
   for (Map reserva in reservas) {
     final reservaObject =Reserva.fromMap(reserva);
-    reservaObject.create();
+    await reservaObject.create();
 
   
   }
