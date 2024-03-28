@@ -22,6 +22,7 @@ abstract class Model {
   Future<int> create() async {
     Database db = await DB().conexion();
     final int data = await db.insert(tableName, toMap());
+    db.close();
     return data;
   }
 
