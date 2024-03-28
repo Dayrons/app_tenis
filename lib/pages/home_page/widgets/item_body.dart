@@ -35,20 +35,20 @@ class ItemBody extends StatelessWidget {
                             image: NetworkImage(faker.image.image()),
                             fit: BoxFit.cover)),
                   ),
-                  const Column(
+                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Dayrons Tovar",
-                        style: TextStyle(
+                        reserva.usuario!.nombre!,
+                        style: const  TextStyle(
                           fontSize: 16.00,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       Text(
-                        "Cancha bello monte",
-                        style: TextStyle(
+                        reserva.cancha!.nombre!,
+                        style: const TextStyle(
                           fontSize: 14.00,
                           color: Colors.black54,
                         ),

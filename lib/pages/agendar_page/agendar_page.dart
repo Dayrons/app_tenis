@@ -20,7 +20,7 @@ class AgendarPage extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(infoReserva.cancha!.imagen),
+              image: AssetImage(infoReserva.cancha!.imagen!),
               fit: BoxFit.cover,
             ),
           ),

@@ -30,7 +30,7 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
             idEstado: reserva['id_estado'],
           );
           reservaObjet.setUsuario();
-          // reservaObjet.setCancha();
+          reservaObjet.setCancha();
           return reservaObjet;
         });
 

@@ -6,13 +6,13 @@ class Cancha extends Model {
   final String tableName = "canchas";
   
   int? id;
-  String nombre;
-  double precio;
-  String direccion;
-  String descripcion;
-  String imagen;
-  String lat;
-  String long;
+  String? nombre;
+  double? precio;
+  String? direccion;
+  String? descripcion;
+  String? imagen;
+  String? lat;
+  String? long;
   String? iluminacion;
   String? superficie;
 
@@ -20,13 +20,13 @@ class Cancha extends Model {
 
   Cancha({
     this.id,
-    required this.nombre,
-    required this.precio,
-    required this.direccion,
-    required this.descripcion,
-    required this.imagen,
-    required this.lat,
-    required this.long,
+     this.nombre,
+     this.precio,
+     this.direccion,
+     this.descripcion,
+     this.imagen,
+     this.lat,
+     this.long,
     this.iluminacion,
     this.superficie,
 

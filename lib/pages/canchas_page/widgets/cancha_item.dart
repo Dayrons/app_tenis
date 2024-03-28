@@ -27,7 +27,7 @@ class CanchaItem extends StatelessWidget {
           image: DecorationImage(
             fit: BoxFit.cover,
             image: AssetImage(
-              cancha.imagen,
+              cancha.imagen!,
             ),
           ),
         ),
@@ -50,7 +50,7 @@ class CanchaItem extends StatelessWidget {
                           height: 5,
                         ),
                         Text(
-                          cancha.nombre,
+                          cancha.nombre!,
                           style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
