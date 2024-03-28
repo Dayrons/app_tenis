@@ -35,6 +35,7 @@ class BodyHome extends StatelessWidget {
                   scrollDirection: Axis.vertical,
                   itemCount: state.reservas.length,
                   itemBuilder: (context, index) {
+                    print(state.reservas[index].usuario!.nombre);
                     return ItemBody(
                       reserva: state.reservas[index],
                     );
