@@ -6,9 +6,7 @@ abstract class Model {
 
   Future<List> list() async {
     Database db = await DB().conexion();
-    final data =  await db.query(tableName);
-    print(data);
-    return data;
+    return await db.query(tableName);
   }
 
   Future<bool> delete() {
@@ -22,7 +20,6 @@ abstract class Model {
   Future<int> create() async {
     Database db = await DB().conexion();
     final int data = await db.insert(tableName, toMap());
-    db.close();
     return data;
   }
 

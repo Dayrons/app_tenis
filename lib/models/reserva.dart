@@ -65,6 +65,7 @@ class Reserva extends Model {
       'id_estado': idEstado,
     };
   }
+ 
 
   Future  setUsuario() async {
     final Map usuario =  await Usuario().find(idUsuario!);
@@ -75,5 +76,12 @@ class Reserva extends Model {
     final Map cancha = await Cancha().find(idCancha!);
     this.cancha = Cancha.fromMap(cancha);
   }
+
+   Reserva.fromMap(Map snapshot)
+      : id = snapshot['id'],
+        fecha = snapshot['fecha'],
+        hora = snapshot['hora'],
+        idUsuario = snapshot['id_usuario'],
+        idCancha = snapshot['id_cancha'];
 
 }
