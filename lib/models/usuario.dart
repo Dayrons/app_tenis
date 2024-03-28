@@ -25,7 +25,7 @@ class Usuario extends Model{
     );
   }
 
-  Usuario.fromMap(Map snapshot, String id)
+  Usuario.fromMap(Map snapshot)
       : id = snapshot['id'],
         nombre = snapshot['nombre'],
         apellido = snapshot['apellido'],

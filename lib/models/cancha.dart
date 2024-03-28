@@ -33,7 +33,7 @@ class Cancha extends Model {
 
   });
 
-  Cancha.fromMap(Map snapshot, String id)
+  Cancha.fromMap(Map snapshot)
       : id = snapshot['id'],
         nombre = snapshot['nombre'],
         precio = snapshot['precio'],

@@ -68,12 +68,12 @@ class Reserva extends Model {
 
   void  setUsuario() async {
     final Map usuario =  await Usuario().find(idUsuario!);
-    this.usuario = Usuario.fromMap(usuario, usuario["id"]);
+    this.usuario = Usuario.fromMap(usuario);
   }
 
   void setCancha()async{
     final Map cancha = await Cancha().find(idCancha!);
-    this.cancha = Cancha.fromMap(cancha, cancha["id"]);
+    this.cancha = Cancha.fromMap(cancha);
   }
 
 }
