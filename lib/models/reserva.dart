@@ -12,6 +12,7 @@ class Reserva extends Model {
   int? idCancha;
   int? idEstado;
   Cancha? cancha;
+  Usuario? usuario;
 
   Reserva(
       {this.id,
@@ -20,7 +21,9 @@ class Reserva extends Model {
       this.idUsuario,
       this.idCancha,
       this.idEstado,
-      this.cancha});
+      this.cancha,
+      this.usuario
+      });
 
   factory Reserva.fromJson(Map<String, dynamic> json) {
     return Reserva(
@@ -63,8 +66,9 @@ class Reserva extends Model {
     };
   }
 
-  // Future<Usuario> usuario() async {
-  //   return await Usuario().find(idUsuario!);
-  // }
+  void  setUsuario() async {
+    final Map usuario =  await Usuario().find(idUsuario!);
+    this.usuario = Usuario.fromMap(usuario, usuario["id"]);
+  }
 
 }

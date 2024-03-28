@@ -23,10 +23,11 @@ abstract class Model {
     return data;
   }
 
-  // Future<Map> find(id) async {
-  //   Database db = await DB().conexion();
-  //   return  db.query(tableName, where: '$id = ?', whereArgs: [id], limit: 1)[0];
-  // }
+  Future<Map> find(id) async {
+    Database db = await DB().conexion();
+    var results = await db.query(tableName, where: '$id = ?', whereArgs: [id], limit: 1);
+    return results[0];
+  }
 
   Map<String, dynamic> toMap() {
     return {};

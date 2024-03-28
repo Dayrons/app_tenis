@@ -12,16 +12,16 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
   ReservasBloc() : super(ReservasInitial()) {
     on<ReservasEvent>((event, emit) async {
       if (event is Init) {
-        // callUsuariosSeeder();
-        // callCanchasSeeder();
-        // callReservasSeeder();
+        callUsuariosSeeder();
+        callCanchasSeeder();
+        callReservasSeeder();
 
         final List reservas = await Reserva().list();
         
         final List<Reserva> reservasObject =
             List.generate(reservas.length, (index) {
           final reserva = reservas[index];
-          return Reserva(
+          final reservaObjet= Reserva(
             id: reserva['id'],
             fecha: reserva['fecha'],
             hora: reserva['hora'],
@@ -29,6 +29,9 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
             idCancha: reserva['id_cancha'],
             idEstado: reserva['id_estado'],
           );
+          reservaObjet.setUsuario();
+          // reservaObjet.setCancha();
+          return reservaObjet;
         });
 
         emit(ReservasInitial(reservas: reservasObject));

@@ -6,13 +6,13 @@ class Usuario extends Model{
   final String tableName = "usuarios";
 
   int? id;
-  String nombre;
-  String foto;
-  String apellido;
-  String email;
-  String telefono;
+  String? nombre;
+  String? foto;
+  String? apellido;
+  String? email;
+  String? telefono;
 
-  Usuario({ this.id, required this.nombre, required this.foto, required this.apellido, required this.email, required this.telefono});
+  Usuario({ this.id,  this.nombre,  this.foto,  this.apellido,  this.email,  this.telefono});
 
   factory Usuario.fromJson(Map<String, dynamic> json) {
     return Usuario(
@@ -24,6 +24,14 @@ class Usuario extends Model{
       telefono: json['telefono'],
     );
   }
+
+  Usuario.fromMap(Map snapshot, String id)
+      : id = snapshot['id'],
+        nombre = snapshot['nombre'],
+        apellido = snapshot['apellido'],
+        email = snapshot['email'],
+        telefono = snapshot['telefono'],
+        foto = snapshot['foto'];
 
 
   Map<String, dynamic> toMap() {
