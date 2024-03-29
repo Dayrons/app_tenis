@@ -2,9 +2,11 @@ import 'package:app_tenis/databases/seeders/seeder.dart';
 import 'package:app_tenis/models/reserva.dart';
 import 'package:app_tenis/models/usuario.dart';
 import 'package:bloc/bloc.dart';
+import 'package:faker/faker.dart';
 import 'package:equatable/equatable.dart';
 part 'reservas_event.dart';
 part 'reservas_state.dart';
+
 
 class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
 
@@ -46,7 +48,8 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
           nombre: event.nombre,
           apellido: event.apellido,
           telefono: event.telefono,
-          email: event.email
+          email: event.email,
+          foto: faker.image.image()
         );
 
         final idUsuario = await usuario.create();
