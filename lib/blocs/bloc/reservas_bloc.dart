@@ -20,7 +20,7 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
         // callReservasSeeder();
 
         final List reservas = await Reserva().list();
-        
+          print("Reservas: $reservas");
         final List<Reserva> reservasObject =
             List.generate(reservas.length, (index) {
           final reserva = reservas[index];
