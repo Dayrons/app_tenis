@@ -14,7 +14,7 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
     on<ReservasEvent>((event, emit) async {
       if (event is Init) {
         // callUsuariosSeeder();
-        // callCanchasSeeder();
+        callCanchasSeeder();
         // callReservasSeeder();
 
         final List reservas = await Reserva().list();

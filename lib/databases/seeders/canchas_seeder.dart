@@ -1,7 +1,9 @@
+import 'package:app_tenis/config/db.dart';
 import 'package:app_tenis/models/cancha.dart';
+import 'package:sqflite/sqflite.dart';
 
 
-    final List<Map<String, dynamic>> canchas = [
+    final List<Map<String, Object?>> canchas = [
       {
         'nombre': "Los naranjos",
         'direccion': "direcion",
@@ -33,9 +35,12 @@ import 'package:app_tenis/models/cancha.dart';
 
 
 void callCanchasSeeder() async {
-  for (Map cancha in canchas) {
-    final canchaObject =Cancha.fromMap(cancha);
-    await canchaObject.create();
+     Database db = await DB().conexion();
+  for (Map<String,Object?> cancha in canchas) {
+    final int data = await db.insert("canchas", cancha);
+    print(data);
+    // return data;
    
   }
+    db.close();
 }
