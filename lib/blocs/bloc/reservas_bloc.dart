@@ -37,12 +37,12 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
 
         });
 
-        print("Reservas: $reservasObject");
 
         for (Reserva reserva in reservasObject) {
           await reserva.setUsuario();
           await reserva.setCancha();
         }
+        print("Reservas: $reservasObject");
 
         emit(ReservasInitial(reservas: reservasObject));
       }
