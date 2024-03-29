@@ -21,6 +21,7 @@ abstract class Model {
     Database db = await DB().conexion();
     final int data = await db.insert(tableName, toMap());
     print(data);
+    await db.close();
     return data;
   }
 
