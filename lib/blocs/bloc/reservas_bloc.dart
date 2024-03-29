@@ -1,5 +1,6 @@
 import 'package:app_tenis/databases/seeders/seeder.dart';
 import 'package:app_tenis/models/reserva.dart';
+import 'package:app_tenis/models/usuario.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 part 'reservas_event.dart';
@@ -12,9 +13,9 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
   ReservasBloc() : super(ReservasInitial()) {
     on<ReservasEvent>((event, emit) async {
       if (event is Init) {
-        callUsuariosSeeder();
-        callCanchasSeeder();
-        callReservasSeeder();
+        // callUsuariosSeeder();
+        // callCanchasSeeder();
+        // callReservasSeeder();
 
         final List reservas = await Reserva().list();
         
@@ -39,6 +40,26 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
         }
 
         emit(ReservasInitial(reservas: reservasObject));
+      }
+      if(event is GuardarReserva){
+        final Usuario usuario = Usuario(
+          nombre: event.nombre,
+          apellido: event.apellido,
+          telefono: event.telefono,
+          email: event.email
+        );
+
+        final idUsuario = await usuario.create();
+        print("Usuario guardado con id: $idUsuario");
+        final reserva = Reserva(
+          fecha: event.fecha,
+          hora: event.hora,
+          idUsuario: idUsuario,
+          idCancha: 1,
+        );
+        final idReserva = await reserva.create();
+        print("Reserva guardada con id: $idReserva");
+        
       }
     });
   }

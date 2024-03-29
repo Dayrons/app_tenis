@@ -14,3 +14,23 @@ class Init extends ReservasEvent {
   List<Object> get props => [];
 }
 
+class GuardarReserva extends ReservasEvent {
+  final String nombre;
+  final String apellido;
+  final String telefono;
+  final String email;
+  final String fecha;
+  final String hora;
+  const GuardarReserva({
+    required this.nombre,
+    required this.apellido,
+    required this.telefono,
+    required this.email,
+    required this.fecha,
+    required this.hora,
+  });
+
+  @override
+  List<Object> get props => [];
+}
+
