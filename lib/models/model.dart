@@ -28,6 +28,7 @@ abstract class Model {
   Future<Map> find(id) async {
     Database db = await DB().conexion();
     var results = await db.query(tableName, where: '$id = ?', whereArgs: [id], limit: 1);
+    await db.close();
     return results[0];
   }
 

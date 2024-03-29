@@ -69,6 +69,8 @@ class Reserva extends Model {
 
   Future  setUsuario() async {
     final Map usuario =  await Usuario().find(idUsuario!);
+
+    print("usuario: $usuario");
     this.usuario = Usuario.fromMap(usuario);
   }
 
