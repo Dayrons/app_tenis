@@ -1,4 +1,5 @@
 import 'package:app_tenis/blocs/bloc/reservas_bloc.dart';
+import 'package:app_tenis/databases/seeders/reservas_seeder.dart';
 import 'package:app_tenis/pages/home_page/widgets/item_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,7 +36,7 @@ class BodyHome extends StatelessWidget {
                   scrollDirection: Axis.vertical,
                   itemCount: state.reservas.length,
                   itemBuilder: (context, index) {
-                    print(state.reservas[index].usuario!.nombre);
+                    print(reservas);
                     return ItemBody(
                       reserva: state.reservas[index],
                     );
