@@ -29,7 +29,7 @@ abstract class Model {
     print("ID user: $id");
     print("Table name: $tableName");
     Database db = await DB().conexion();
-    var results = await db.query(tableName, where: '$id = ?', whereArgs: [id], limit: 1);
+    var results = await db.query(tableName, where: 'id = ?', whereArgs: [id], limit: 1);
     await db.close();
     return results[0];
   }
