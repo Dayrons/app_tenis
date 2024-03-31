@@ -12,7 +12,7 @@ class CanchasBloc extends Bloc<CanchasEvent, CanchasState> {
       if(event is Init){
         final List canchas = await Cancha().list();
 
-        print(canchas);
+        
         final List<Cancha> cancgasObject =
             List.generate(canchas.length, (index) {
           final cancha = canchas[index];
@@ -31,6 +31,11 @@ class CanchasBloc extends Bloc<CanchasEvent, CanchasState> {
           
 
         });
+
+        for (Cancha cancha in cancgasObject) {
+          await cancha.obtenerProbabilidadDeLluvia();
+        }
+
 
         // emit((event.canchas));
       }
