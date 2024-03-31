@@ -9,12 +9,14 @@ class CanchaItem extends StatelessWidget {
   final Size? size;
   final Cancha cancha;
   const CanchaItem({super.key, this.size, required this.cancha});
-
+  
   @override
   Widget build(BuildContext context) {
     final height = size!.height * 0.4;
     final probabilidadDeLluvia = cancha.probabilidadClimatologica!["pop"] * 100;
     final temperatura = cancha.probabilidadClimatologica!["main"]["temp"].round();
+    final String icon  = cancha.probabilidadClimatologica!["weather"][0]["icon"];
+    print(icon);
     return InkWell(
       onTap: () {
         context.read<InfoReservacionCubit>().setCancha(cancha);
@@ -93,7 +95,7 @@ class CanchaItem extends StatelessWidget {
                                 image: DecorationImage(
                                   fit: BoxFit.contain,
                                   image: NetworkImage(
-                                    "http://openweathermap.org/img/wn/${cancha.probabilidadClimatologica!["weather"][0]["icon"]}.png",
+                                    "http://openweathermap.org/img/wn/$icon.png",
                                   ),
                                 ),
                               ),
