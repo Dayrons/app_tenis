@@ -60,9 +60,11 @@ class Cancha extends Model {
   }
 
   Future<int> obtenerProbabilidadDeLluvia() async {
-  var url = Uri.parse('http://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={3968c586fc0c853ab92995ab7def51b7}');
+  var url = Uri.parse('http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&appid=3968c586fc0c853ab92995ab7def51b7');
 
   var response = await http.get(url);
+  print(response.body);
+  print(response.statusCode);
   var data = json.decode(response.body);
   int probabilidadDeLluvia = data['list'][0]['rain']['3h'];
   return probabilidadDeLluvia;

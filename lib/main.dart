@@ -1,4 +1,5 @@
 import 'package:app_tenis/blocs/bloc/reservas_bloc.dart';
+import 'package:app_tenis/blocs/canchas_bloc/canchas_bloc.dart';
 import 'package:app_tenis/blocs/cubit/info_reservacion_cubit.dart';
 import 'package:app_tenis/pages/home_page/home_page.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,9 @@ class BlocsProviders extends StatelessWidget {
         ),
          BlocProvider<ReservasBloc>(
           create: (context) => ReservasBloc(),
+        ),
+          BlocProvider<CanchasBloc>(
+          create: (context) => CanchasBloc(),
         ),
       ],
       child: const MyApp(),

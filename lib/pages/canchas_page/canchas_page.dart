@@ -1,6 +1,8 @@
+import 'package:app_tenis/blocs/canchas_bloc/canchas_bloc.dart';
 import 'package:app_tenis/models/cancha.dart';
 import 'package:app_tenis/pages/canchas_page/widgets/cancha_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CanchasPage extends StatelessWidget {
   CanchasPage({Key? key}) : super(key: key);
@@ -40,6 +42,7 @@ class CanchasPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    _init(context);
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
@@ -113,4 +116,9 @@ class CanchasPage extends StatelessWidget {
       ),
     );
   }
+   void _init(context){
+    BlocProvider.of<CanchasBloc>(context).add(Init());
+    
+  }
+
 }

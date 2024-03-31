@@ -20,8 +20,7 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
         // callReservasSeeder();
 
         final List reservas = await Reserva().list();
-          print("Reservas: $reservas");
-          print("count : ${reservas.length}");
+
         final List<Reserva> reservasObject =
             List.generate(reservas.length, (index) {
           final reserva = reservas[index];
@@ -42,7 +41,7 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
           await reserva.setUsuario();
           await reserva.setCancha();
         }
-        print("Reservas: $reservasObject");
+        
 
         emit(ReservasInitial(reservas: reservasObject));
       }
