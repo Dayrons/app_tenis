@@ -86,7 +86,19 @@ class CanchaItem extends StatelessWidget {
                               Icons.cloudy_snowing,
                               color: Colors.blueAccent,
                             ),
-                            Image.network("//const urlIcon = `http://openweathermap.org/img/wn/${cancha.probabilidadClimatologica!["weather"][0]["icon"]}.png` "),
+                            Container(
+                              width: 50,
+                              height: 50,
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  fit: BoxFit.contain,
+                                  image: AssetImage(
+                                    cancha.probabilidadClimatologica!["weather"][0]["icon"],
+                                  ),
+                                ),
+                              ),
+                            ),
+                         
                             Text(
                               'Probabilidad : ${probabilidadDeLluvia}%',
                               style: TextStyle(color: Colors.white),
