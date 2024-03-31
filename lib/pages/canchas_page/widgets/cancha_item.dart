@@ -93,7 +93,7 @@ class CanchaItem extends StatelessWidget {
                                 image: DecorationImage(
                                   fit: BoxFit.contain,
                                   image: NetworkImage(
-                                    cancha.probabilidadClimatologica!["weather"][0]["icon"],
+                                    "http://openweathermap.org/img/wn/${cancha.probabilidadClimatologica!["weather"][0]["icon"]}.png",
                                   ),
                                 ),
                               ),
