@@ -13,6 +13,8 @@ class CanchaItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = size!.height * 0.4;
+    final probabilidadDeLluvia = cancha.probabilidadClimatologica!["pop"] * 100;
+    final temperatura = cancha.probabilidadClimatologica!["main"]["temp"].round();
     return InkWell(
       onTap: () {
         context.read<InfoReservacionCubit>().setCancha(cancha);
@@ -23,7 +25,7 @@ class CanchaItem extends StatelessWidget {
         width: size!.width * 0.35,
         height: height,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
           image: DecorationImage(
             fit: BoxFit.cover,
             image: AssetImage(
@@ -42,9 +44,9 @@ class CanchaItem extends StatelessWidget {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'Clima: 25°',
-                          style: TextStyle(color: Colors.white),
+                         Text(
+                          'Temperatura: ${temperatura}°',
+                          style: const TextStyle(color: Colors.white),
                         ),
                         const SizedBox(
                           height: 5,
@@ -73,19 +75,20 @@ class CanchaItem extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: Colors.black.withOpacity(0.5),
                     ),
-                    child: const Row(
+                    child:  Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.cloudy_snowing,
                               color: Colors.blueAccent,
                             ),
+                            Image.network("//const urlIcon = `http://openweathermap.org/img/wn/${cancha.probabilidadClimatologica!["weather"][0]["icon"]}.png` "),
                             Text(
-                              'Probabilidad : 0%',
+                              'Probabilidad : ${probabilidadDeLluvia}%',
                               style: TextStyle(color: Colors.white),
                             ),
                           ],
