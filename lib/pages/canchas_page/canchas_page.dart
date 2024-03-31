@@ -7,38 +7,38 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class CanchasPage extends StatelessWidget {
   CanchasPage({Key? key}) : super(key: key);
 
-  final List<Cancha> canchas = [
-    Cancha(
-      id: 1,
-      nombre: "Los naranjos",
-      direccion: "direcion",
-      descripcion: "Bello ambiente y siempre soleado",
-      imagen: "assets/cancha_A.jpg",
-      lat: "10",
-      precio: 50.00,
-      long: "10",
-    ),
-    Cancha(
-      id: 2,
-      nombre: "Prados del este",
-      precio: 350.00,
-      direccion: "direcion",
-      descripcion: "Hermosas canchas rodeadas de naturaleza",
-      imagen: "assets/cancha_B.jpg",
-      lat: "20",
-      long: "20",
-    ),
-    Cancha(
-      id: 3,
-      nombre: "El bosque",
-      precio: 180.00,
-      direccion: "direcion",
-      descripcion: "Canchas con vista a un hermoso bosque",
-      imagen: "assets/cancha_C.jpg",
-      lat: "30",
-      long: "30",
-    )
-  ];
+  // final List<Cancha> canchas = [
+  //   Cancha(
+  //     id: 1,
+  //     nombre: "Los naranjos",
+  //     direccion: "direcion",
+  //     descripcion: "Bello ambiente y siempre soleado",
+  //     imagen: "assets/cancha_A.jpg",
+  //     lat: "10",
+  //     precio: 50.00,
+  //     long: "10",
+  //   ),
+  //   Cancha(
+  //     id: 2,
+  //     nombre: "Prados del este",
+  //     precio: 350.00,
+  //     direccion: "direcion",
+  //     descripcion: "Hermosas canchas rodeadas de naturaleza",
+  //     imagen: "assets/cancha_B.jpg",
+  //     lat: "20",
+  //     long: "20",
+  //   ),
+  //   Cancha(
+  //     id: 3,
+  //     nombre: "El bosque",
+  //     precio: 180.00,
+  //     direccion: "direcion",
+  //     descripcion: "Canchas con vista a un hermoso bosque",
+  //     imagen: "assets/cancha_C.jpg",
+  //     lat: "30",
+  //     long: "30",
+  //   )
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -82,43 +82,58 @@ class CanchasPage extends StatelessWidget {
                     icon: const Icon(
                       Icons.arrow_circle_left_outlined,
                       color: Colors.white,
-                      
                     ),
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  CanchaItem(
-                    cancha: canchas[0],
-                    size: size,
-                  ),
-                  CanchaItem(
-                    cancha: canchas[1],
-                    size: size,
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Center(
-                child: CanchaItem(
-                  cancha: canchas[2],
-                  size: size,
-                ),
+              BlocBuilder<CanchasBloc, CanchasState>(
+                builder: (context, state) {
+                  if (state is CanchasLoaded) {
+                   
+                    List<Cancha> canchas = state.canchas;
+
+                    return Column(children: [
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CanchaItem(
+                            cancha: canchas[0],
+                            size: size,
+                          ),
+                          CanchaItem(
+                            cancha: canchas[1],
+                            size: size,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Center(
+                        child: CanchaItem(
+                          cancha: canchas[2],
+                          size: size,
+                        ),
+                      )
+                    ]);
+                  }
+                  if (state is CanchasLoading) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  return Container();
+                },
               )
             ]),
       ),
     );
   }
-   void _init(context){
-    BlocProvider.of<CanchasBloc>(context).add(Init());
-    
-  }
 
+  void _init(context) {
+    BlocProvider.of<CanchasBloc>(context).add(Init());
+  }
 }

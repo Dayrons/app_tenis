@@ -8,7 +8,7 @@ part 'canchas_state.dart';
 class CanchasBloc extends Bloc<CanchasEvent, CanchasState> {
   CanchasBloc() : super(CanchasInitial()) {
     on<CanchasEvent>((event, emit) async {
-
+      emit(CanchasLoading());
       if(event is Init){
         final List canchas = await Cancha().list();
 
@@ -33,11 +33,11 @@ class CanchasBloc extends Bloc<CanchasEvent, CanchasState> {
         });
 
         for (Cancha cancha in cancgasObject) {
-          await cancha.obtenerProbabilidadDeLluvia();
+          await cancha.obtenerProbabilidadClimatologica();
         }
 
-
-        // emit((event.canchas));
+        emit(CanchasLoaded(cancgasObject));
+        
       }
 
     });

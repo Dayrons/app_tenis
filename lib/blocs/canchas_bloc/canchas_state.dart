@@ -8,3 +8,15 @@ sealed class CanchasState extends Equatable {
 }
 
 final class CanchasInitial extends CanchasState {}
+
+
+final class CanchasLoading extends CanchasState {}
+
+final class CanchasLoaded extends CanchasState {
+  final List<Cancha> canchas;
+
+  const CanchasLoaded(this.canchas);
+
+  @override
+  List<Object> get props => [canchas];
+}
