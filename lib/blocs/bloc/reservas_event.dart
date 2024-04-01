@@ -21,6 +21,7 @@ class GuardarReserva extends ReservasEvent {
   final String email;
   final String fecha;
   final String hora;
+  final int idCancha;
   const GuardarReserva({
     required this.nombre,
     required this.apellido,
@@ -28,6 +29,7 @@ class GuardarReserva extends ReservasEvent {
     required this.email,
     required this.fecha,
     required this.hora,
+    required this.idCancha,
   });
 
   @override

@@ -17,5 +17,7 @@ class InfoReservacionCubit extends Cubit<Reserva> {
         ));
 
   void setCancha(Cancha cancha) => emit(state.copyWith(cancha: cancha));
+
+  void setFehca(String fecha) => emit(state.copyWith(fecha: fecha));
     
 }

@@ -84,10 +84,7 @@ class CanchaItem extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            const Icon(
-                              Icons.cloudy_snowing,
-                              color: Colors.blueAccent,
-                            ),
+                         
                             Container(
                               width: 50,
                               height: 50,

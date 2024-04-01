@@ -1,6 +1,8 @@
 // El fondo sera la cancha seleccionada en la pantalla anterior conn el nombre de la cancha como titulo
 // el boton de regresa sera el icono de flecha hacia atras encerrado en un circulo
 // el formulario tendra el efecto cristalino
+import 'dart:developer';
+
 import 'package:app_tenis/blocs/bloc/reservas_bloc.dart';
 import 'package:app_tenis/blocs/cubit/info_reservacion_cubit.dart';
 import 'package:app_tenis/models/reserva.dart';
@@ -20,7 +22,7 @@ class AgendarPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     final Reserva infoReserva = context.watch<InfoReservacionCubit>().state;
-    print(size.width * 0.5);
+   
     final double width = size.width * 0.8;
     return Scaffold(
         body: Stack(
@@ -116,7 +118,7 @@ class AgendarPage extends StatelessWidget {
                     ),
                     Boton(
                       onTap: () {
-                        guardarReserva(context);  
+                        guardarReserva(context,infoReserva: infoReserva);  
                       },
                       texto: "Reservar",
                       color: Colors.green,
@@ -153,19 +155,22 @@ class AgendarPage extends StatelessWidget {
           pickedTime.hour,
           pickedTime.minute,
         );
-        print('Fecha y hora seleccionadas: ${pickedDateTime.toString()}');
+        context.read<InfoReservacionCubit>().setFehca(pickedDateTime.toString());
+        
       }
     }
   }
 
-  void guardarReserva(context) {
+  void guardarReserva(context,{required Reserva infoReserva}) {
     BlocProvider.of<ReservasBloc>(context).add(GuardarReserva(
       nombre: nombreController.text,
       apellido: apellidoController.text,
       telefono: telefonoController.text,
       email: emailController.text,
-      fecha: '',
+      fecha: infoReserva.fecha!,
       hora: '',
+      idCancha: infoReserva.cancha!.id!,
+      
     ));
    
   }
