@@ -46,25 +46,32 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
         emit(ReservasInitial(reservas: reservasObject));
       }
       if(event is GuardarReserva){
-        print(event.fecha);
-        // final Usuario usuario = Usuario(
-        //   nombre: event.nombre,
-        //   apellido: event.apellido,
-        //   telefono: event.telefono,
-        //   email: event.email,
-        //   foto: faker.image.image()
-        // );
 
-        // final idUsuario = await usuario.create();
-        // print("Usuario guardado con id: $idUsuario");
-        // final reserva = Reserva(
-        //   fecha: event.fecha,
-        //   hora: event.hora,
-        //   idUsuario: idUsuario,
-        //   idCancha: 1,
-        // );
-        // final idReserva = await reserva.create();
-        // print("Reserva guardada con id: $idReserva");
+        final bool validacion  = await Reserva().validacionPorDia(event.fecha);
+        if(validacion){
+          // emit(ReservasError(message: "No se puede reservar en este día"));
+
+          final Usuario usuario = Usuario(
+          nombre: event.nombre,
+          apellido: event.apellido,
+          telefono: event.telefono,
+          email: event.email,
+          foto: faker.image.image()
+        );
+
+        final idUsuario = await usuario.create();
+        print("Usuario guardado con id: $idUsuario");
+        final reserva = Reserva(
+          fecha: event.fecha,
+          hora: event.hora,
+          idUsuario: idUsuario,
+          idCancha: 1,
+        );
+        final idReserva = await reserva.create();
+        print("Reserva guardada con id: $idReserva");
+          return;
+        }
+        
         
       }
     });

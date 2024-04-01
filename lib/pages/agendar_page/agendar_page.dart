@@ -155,7 +155,8 @@ class AgendarPage extends StatelessWidget {
           pickedTime.hour,
           pickedTime.minute,
         );
-        context.read<InfoReservacionCubit>().setFehca(pickedDateTime.toString());
+        context.read<InfoReservacionCubit>().setFecha(pickedDate.toString());
+        context.read<InfoReservacionCubit>().setHora(pickedTime.toString());
         
       }
     }
@@ -168,7 +169,7 @@ class AgendarPage extends StatelessWidget {
       telefono: telefonoController.text,
       email: emailController.text,
       fecha: infoReserva.fecha!,
-      hora: '',
+      hora: infoReserva.hora!,
       idCancha: infoReserva.cancha!.id!,
       
     ));

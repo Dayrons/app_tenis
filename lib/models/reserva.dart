@@ -1,6 +1,8 @@
+import 'package:app_tenis/config/db.dart';
 import 'package:app_tenis/models/cancha.dart';
 import 'package:app_tenis/models/model.dart';
 import 'package:app_tenis/models/usuario.dart';
+import 'package:sqflite/sqflite.dart';
 
 class Reserva extends Model {
   final String tableName = "reservas";
@@ -85,5 +87,18 @@ class Reserva extends Model {
         hora = snapshot['hora'],
         idUsuario = snapshot['id_usuario'],
         idCancha = snapshot['id_cancha'];
+
+
+  Future<bool> validacionPorDia(String fecha) async{
+   
+    final Database db = await DB().conexion();
+
+    List test  = await db.query(tableName, where: 'fecha  = ?', whereArgs: [fecha]);
+    if(test.length <= 3){
+      return true;
+    }
+    return false;
+
+  }
 
 }
