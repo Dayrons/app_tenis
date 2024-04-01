@@ -1,5 +1,6 @@
 import 'package:app_tenis/blocs/bloc/reservas_bloc.dart';
 import 'package:app_tenis/models/reserva.dart';
+import 'package:app_tenis/utils/funciones.dart';
 import 'package:flutter/material.dart';
 import 'package:faker/faker.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,9 +46,9 @@ class ItemBody extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        reserva.usuario!.nombre!,
+                        "${capitalizeFirstLetter(reserva.usuario!.nombre!)} ${capitalizeFirstLetter(reserva.usuario!.apellido!)}",
                         style: const TextStyle(
-                          fontSize: 16.00,
+                          fontSize: 14.00,
                           fontWeight: FontWeight.bold,
                         ),
                       ),

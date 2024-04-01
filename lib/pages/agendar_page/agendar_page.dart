@@ -194,5 +194,6 @@ class AgendarPage extends StatelessWidget {
       hora: infoReserva.hora!,
       idCancha: infoReserva.cancha!.id!,
     ));
+    FocusScope.of(context).unfocus();
   }
 }
