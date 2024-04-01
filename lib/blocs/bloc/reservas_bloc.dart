@@ -48,6 +48,7 @@ class ReservasBloc extends Bloc<ReservasEvent, ReservasState> {
       if(event is GuardarReserva){
 
         final bool validacion  = await Reserva().validacionPorDia(event.fecha);
+        print("validacion: $validacion");
         if(validacion){
           // emit(ReservasError(message: "No se puede reservar en este día"));
 
