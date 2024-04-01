@@ -85,12 +85,41 @@ class ItemBody extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  BlocProvider.of<ReservasBloc>(context).add(EliminarReserva(idReserva: reserva.id!));
+                  showDialog(
+                    context: context,
+                    builder: (context) => AlertDialog(
+                        title: const Icon(
+                          Icons.info_outline_rounded,
+                          size: 30,
+                        ),
+                        content:
+                            const Text('¿Estas seguro de eliminar la reserva?'),
+                        actions: [
+                          TextButton(
+                            child: Text("Eliminar"),
+                            onPressed: () {
+                              BlocProvider.of<ReservasBloc>(context)
+                                  .add(EliminarReserva(idReserva: reserva.id!));
+                            },
+                          ),
+                          TextButton(
+                            child: Text("Cancelar"),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          )
+                        ]),
+                  );
                 },
                 icon: const Icon(Icons.delete),
                 color: Colors.grey[300],
                 iconSize: 20,
               )
             ]));
+  }
+
+  void _eliminar(BuildContext context, Reserva reserva) {
+    BlocProvider.of<ReservasBloc>(context)
+        .add(EliminarReserva(idReserva: reserva.id!));
   }
 }
