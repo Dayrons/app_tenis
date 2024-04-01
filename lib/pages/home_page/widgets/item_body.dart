@@ -1,6 +1,9 @@
+import 'package:app_tenis/blocs/bloc/reservas_bloc.dart';
 import 'package:app_tenis/models/reserva.dart';
 import 'package:flutter/material.dart';
 import 'package:faker/faker.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 
 class ItemBody extends StatelessWidget {
   final Reserva reserva;
@@ -8,6 +11,8 @@ class ItemBody extends StatelessWidget {
   final faker = Faker();
   @override
   Widget build(BuildContext context) {
+    DateTime fecha = DateTime.parse(reserva.fecha!);
+    String formateado = DateFormat('yyyy-MM-dd').format(fecha);
     return Container(
         margin: const EdgeInsets.only(right: 10, bottom: 20),
         padding: const EdgeInsets.all(10),
@@ -35,13 +40,13 @@ class ItemBody extends StatelessWidget {
                             image: NetworkImage(reserva.usuario!.foto!),
                             fit: BoxFit.cover)),
                   ),
-                   Column(
+                  Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         reserva.usuario!.nombre!,
-                        style: const  TextStyle(
+                        style: const TextStyle(
                           fontSize: 16.00,
                           fontWeight: FontWeight.bold,
                         ),
@@ -57,14 +62,35 @@ class ItemBody extends StatelessWidget {
                   ),
                 ],
               ),
-              Container(
-                  child: Text(
-                reserva.fecha!,
-                style:const  TextStyle(
-                  fontSize: 16.00,
-                  fontWeight: FontWeight.bold,
-                ),
-              ))
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                      child: Text(
+                    formateado,
+                    style: const TextStyle(
+                      fontSize: 12.00,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )),
+                  Container(
+                      child: Text(
+                    reserva.hora!,
+                    style: const TextStyle(
+                      fontSize: 12.00,
+                      color: Colors.black54,
+                    ),
+                  ))
+                ],
+              ),
+              IconButton(
+                onPressed: () {
+                  BlocProvider.of<ReservasBloc>(context).add(EliminarReserva(idReserva: reserva.id!));
+                },
+                icon: const Icon(Icons.delete),
+                color: Colors.grey[300],
+                iconSize: 20,
+              )
             ]));
   }
 }

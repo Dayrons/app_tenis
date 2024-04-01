@@ -13,4 +13,25 @@ final class ReservasInitial extends ReservasState {
   const ReservasInitial({
     this.reservas = const [],
   });
+  
+  @override
+  List<Object> get props => [reservas];
+}
+
+final class ReservasError extends ReservasState {
+  final String mensaje;
+
+  const ReservasError({
+    required this.mensaje,
+  });
+}
+
+final class ReservasLoading extends ReservasState {
+  const ReservasLoading();
+}
+
+final class ReservasSuccess extends ReservasState {
+  
+
+
 }

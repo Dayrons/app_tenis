@@ -4,46 +4,17 @@ import 'package:app_tenis/pages/canchas_page/widgets/cancha_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+
 class CanchasPage extends StatelessWidget {
   CanchasPage({Key? key}) : super(key: key);
 
-  // final List<Cancha> canchas = [
-  //   Cancha(
-  //     id: 1,
-  //     nombre: "Los naranjos",
-  //     direccion: "direcion",
-  //     descripcion: "Bello ambiente y siempre soleado",
-  //     imagen: "assets/cancha_A.jpg",
-  //     lat: "10",
-  //     precio: 50.00,
-  //     long: "10",
-  //   ),
-  //   Cancha(
-  //     id: 2,
-  //     nombre: "Prados del este",
-  //     precio: 350.00,
-  //     direccion: "direcion",
-  //     descripcion: "Hermosas canchas rodeadas de naturaleza",
-  //     imagen: "assets/cancha_B.jpg",
-  //     lat: "20",
-  //     long: "20",
-  //   ),
-  //   Cancha(
-  //     id: 3,
-  //     nombre: "El bosque",
-  //     precio: 180.00,
-  //     direccion: "direcion",
-  //     descripcion: "Canchas con vista a un hermoso bosque",
-  //     imagen: "assets/cancha_C.jpg",
-  //     lat: "30",
-  //     long: "30",
-  //   )
-  // ];
+
 
   @override
   Widget build(BuildContext context) {
     _init(context);
     final Size size = MediaQuery.of(context).size;
+    
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -88,6 +59,7 @@ class CanchasPage extends StatelessWidget {
               ),
               BlocBuilder<CanchasBloc, CanchasState>(
                 builder: (context, state) {
+                  
                   if (state is CanchasLoaded) {
                    
                     List<Cancha> canchas = state.canchas;

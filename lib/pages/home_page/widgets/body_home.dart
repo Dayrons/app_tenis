@@ -1,5 +1,4 @@
 import 'package:app_tenis/blocs/bloc/reservas_bloc.dart';
-import 'package:app_tenis/databases/seeders/reservas_seeder.dart';
 import 'package:app_tenis/pages/home_page/widgets/item_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,7 +27,7 @@ class BodyHome extends StatelessWidget {
           ),
         ),
         child: Container(
-          padding: EdgeInsets.only(top: 20, left: 20, right: 20),
+          padding:  const  EdgeInsets.only(top: 20, left: 20, right: 20),
           child: BlocBuilder<ReservasBloc, ReservasState>(
             builder: (context, state) {
               if (state is ReservasInitial) {

@@ -9,8 +9,11 @@ abstract class Model {
     return await db.query(tableName);
   }
 
-  Future<bool> delete() {
-    return Future<bool>.value(true);
+  Future<int> delete(id) async {
+    Database db = await DB().conexion();
+    var results = await db.delete(tableName, where: 'id = ?', whereArgs: [id]);
+    await db.close();
+    return results;
   }
 
   Future<bool> update() {
@@ -26,8 +29,7 @@ abstract class Model {
   }
 
   Future<Map> find(id) async {
-    print("ID user: $id");
-    print("Table name: $tableName");
+
     Database db = await DB().conexion();
     var results = await db.query(tableName, where: 'id = ?', whereArgs: [id], limit: 1);
     await db.close();

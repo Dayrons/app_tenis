@@ -24,8 +24,7 @@ class Reserva extends Model {
       this.idCancha,
       this.idEstado,
       this.cancha,
-      this.usuario
-      });
+      this.usuario});
 
   factory Reserva.fromJson(Map<String, dynamic> json) {
     return Reserva(
@@ -67,38 +66,39 @@ class Reserva extends Model {
       'id_estado': idEstado,
     };
   }
- 
 
-  Future  setUsuario() async {
-    final Map usuario =  await Usuario().find(idUsuario!);
-
-    print("usuario: $usuario");
+  Future setUsuario() async {
+    final Map usuario = await Usuario().find(idUsuario!);
     this.usuario = Usuario.fromMap(usuario);
   }
 
-  Future setCancha()async{
+  Future setCancha() async {
     final Map cancha = await Cancha().find(idCancha!);
     this.cancha = Cancha.fromMap(cancha);
   }
 
-   Reserva.fromMap(Map snapshot)
+  Reserva.fromMap(Map snapshot)
       : id = snapshot['id'],
         fecha = snapshot['fecha'],
         hora = snapshot['hora'],
         idUsuario = snapshot['id_usuario'],
         idCancha = snapshot['id_cancha'];
 
-
-  Future<bool> validacionPorDia(String fecha) async{
-   
+  Future<Map> validacionPorDia(String fecha, int idCancha) async {
     final Database db = await DB().conexion();
 
-    List test  = await db.query(tableName, where: 'fecha  = ?', whereArgs: [fecha]);
-    if(test.length <= 3){
-      return true;
+    List reservas = await db.query(tableName,
+        where: 'fecha = ? AND id_cancha = ?', whereArgs: [fecha, idCancha]);
+
+    if (reservas.length < 3) {
+      return {'mensaje': 'Reserva exitosa', 'validacion': true};
     }
-    return false;
 
+    for (var reserva in reservas) {
+      if (reserva['hora'] == hora) {
+        return {'mensaje': 'La hora indicada ya fue seleccionada', 'validacion': false};
+      }
+    }
+    return {'mensaje': 'Ya no se pueder reservar por el dia de hoy', 'validacion': false};
   }
-
 }

@@ -5,13 +5,13 @@ class Input extends StatelessWidget {
   final String? input;
   final bool obscureText;
   final bool validacion;
-  final Function onChange;
+  final Function? onChange;
 final double? width;
   final TextEditingController? controller;
   const Input({
     Key? key,
     this.texto,
-    required this.onChange,
+    this.onChange,
     this.input,
     required this.controller,
     this.obscureText = false,
@@ -39,7 +39,7 @@ final double? width;
               height: 10.00,
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 5.00),
+              padding: const EdgeInsets.symmetric(horizontal: 5.00),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5.00),
                 color: validacion
@@ -53,7 +53,8 @@ final double? width;
                 cursorColor: const  Color(0XFF2CDA9D),
                 decoration: const  InputDecoration(border: InputBorder.none),
                 onChanged: (value) {
-                  onChange(value, input);
+                  onChange == null ? () {} :
+                  onChange!(value, input);
                 },
               ),
             ),

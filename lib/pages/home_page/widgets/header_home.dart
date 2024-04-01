@@ -65,11 +65,11 @@ class HeaderHome extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green,
                     ),
-                    icon: Icon(
+                    icon:const  Icon(
                       Icons.add,
                       color: Colors.white,
                     ),
-                    label: Text(
+                    label:const  Text(
                       'Agendar',
                       style: TextStyle(color: Colors.white),
                     ),

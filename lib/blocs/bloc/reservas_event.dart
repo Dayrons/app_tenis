@@ -21,18 +21,27 @@ class GuardarReserva extends ReservasEvent {
   final String email;
   final String fecha;
   final String hora;
-  final int idCancha;
+  final int? idCancha;
   const GuardarReserva({
-    required this.nombre,
-    required this.apellido,
-    required this.telefono,
-    required this.email,
-    required this.fecha,
-    required this.hora,
-    required this.idCancha,
+     this.nombre = "",
+     this.apellido ="",
+     this.telefono  = "",
+     this.email= "",
+     this.fecha = "",
+     this.hora = "",
+     this.idCancha,
   });
 
   @override
   List<Object> get props => [];
+}
+
+
+class EliminarReserva extends ReservasEvent {
+  final int idReserva;
+  const EliminarReserva({required this.idReserva});
+
+  @override
+  List<Object> get props => [idReserva];
 }
 

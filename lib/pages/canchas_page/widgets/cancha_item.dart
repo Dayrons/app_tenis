@@ -9,18 +9,19 @@ class CanchaItem extends StatelessWidget {
   final Size? size;
   final Cancha cancha;
   const CanchaItem({super.key, this.size, required this.cancha});
-  
+
   @override
   Widget build(BuildContext context) {
     final height = size!.height * 0.4;
     final probabilidadDeLluvia = cancha.probabilidadClimatologica!["pop"] * 100;
-    final temperatura = cancha.probabilidadClimatologica!["main"]["temp"].round();
-    final String icon  = cancha.probabilidadClimatologica!["weather"][0]["icon"];
-    print(icon);
+    final temperatura =
+        cancha.probabilidadClimatologica!["main"]["temp"].round();
+    final String icon = cancha.probabilidadClimatologica!["weather"][0]["icon"];
     return InkWell(
       onTap: () {
         context.read<InfoReservacionCubit>().setCancha(cancha);
-        Navigator.push( context, CupertinoPageRoute(builder: (context) => AgendarPage())); 
+        Navigator.push(
+            context, CupertinoPageRoute(builder: (context) => AgendarPage()));
       },
       child: Container(
         margin: const EdgeInsets.only(right: 10),
@@ -36,7 +37,6 @@ class CanchaItem extends StatelessWidget {
           ),
         ),
         child: Container(
-         
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -46,7 +46,7 @@ class CanchaItem extends StatelessWidget {
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                         Text(
+                        Text(
                           'Temperatura: ${temperatura}°',
                           style: const TextStyle(color: Colors.white),
                         ),
@@ -77,14 +77,13 @@ class CanchaItem extends StatelessWidget {
                     decoration: BoxDecoration(
                       color: Colors.black.withOpacity(0.5),
                     ),
-                    child:  Row(
+                    child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                         
                             Container(
                               width: 50,
                               height: 50,
@@ -97,10 +96,22 @@ class CanchaItem extends StatelessWidget {
                                 ),
                               ),
                             ),
-                         
-                            Text(
-                              'Probabilidad : ${probabilidadDeLluvia}%',
-                              style: TextStyle(color: Colors.white),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Probabilidad de lluvia:',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 12),
+                                ),
+                                Text(
+                                  '$probabilidadDeLluvia%',
+                                  style: const TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12),
+                                ),
+                              ],
                             ),
                           ],
                         ),
