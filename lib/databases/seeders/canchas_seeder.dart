@@ -46,5 +46,5 @@ void callCanchasSeeder() async {
       await db.insert("canchas", cancha);
     }
   }
-  db.close();
+
 }
