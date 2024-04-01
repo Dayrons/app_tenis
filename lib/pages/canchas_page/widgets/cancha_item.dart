@@ -13,7 +13,7 @@ class CanchaItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final height = size!.height * 0.4;
-    final probabilidadDeLluvia = cancha.probabilidadClimatologica!["pop"] * 100;
+    final probabilidadDeLluvia = (cancha.probabilidadClimatologica!["pop"] * 100).round();
     final temperatura =
         cancha.probabilidadClimatologica!["main"]["temp"].round();
     final String icon = cancha.probabilidadClimatologica!["weather"][0]["icon"];

@@ -93,8 +93,12 @@ class CanchasPage extends StatelessWidget {
                     ]);
                   }
                   if (state is CanchasLoading) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
+                    return  Container(
+                      width: size.width,
+                      height: size!.height * 0.8,
+                      child: const  Center(
+                        child: CircularProgressIndicator(),
+                      ),
                     );
                   }
                   return Container();
