@@ -101,6 +101,7 @@ class ItemBody extends StatelessWidget {
                             onPressed: () {
                               BlocProvider.of<ReservasBloc>(context)
                                   .add(EliminarReserva(idReserva: reserva.id!));
+                                  Navigator.of(context).pop();
                             },
                           ),
                           TextButton(

@@ -12,7 +12,6 @@ abstract class Model {
   Future<int> delete(id) async {
     Database db = await DB().conexion();
     var results = await db.delete(tableName, where: 'id = ?', whereArgs: [id]);
-    await db.close();
     return results;
   }
 
@@ -23,7 +22,6 @@ abstract class Model {
   Future<int> create() async {
     Database db = await DB().conexion();
     final int data = await db.insert(tableName, toMap());
-    await db.close();
     return data;
   }
 
@@ -31,7 +29,6 @@ abstract class Model {
 
     Database db = await DB().conexion();
     var results = await db.query(tableName, where: 'id = ?', whereArgs: [id], limit: 1);
-    await db.close();
     return results[0];
   }
 
